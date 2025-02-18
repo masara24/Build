@@ -1,25 +1,19 @@
 # Build
 
-
 - [Menu](#Menu)
 - [Author](#Author)
 
 ## Menu
 
-- [build apk](build_apk/README.md)
+- [Bochs Hello](https://github.com/masara24/Bochs_Hello)
 
 
-- [build p4a](build_p4a/README.md)
+- [Kivy P4A](https://github.com/masara24/Kivy_P4A)
 
 
-- [build git](build_git/README.md)
+- [Vbox_Linux](build_vbox/README.md)
 
-
-- [build bxi](build_bxi/README.md)
-
-
-- [build scp](build_scp/README.md)
 
 ## Author
 
-Clear
+masara
