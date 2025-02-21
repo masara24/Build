@@ -1,7 +1,10 @@
+## ISO file
+
+2025-02-07  21:46        11,085,824 #1_init_hello.iso
+2025-02-08  10:11        12,167,168 #2_init_shell.iso
+
 ## ISO content
 
-2025-02-21  11:14    <DIR>          .
-2025-02-21  11:14    <DIR>          ..
 2025-02-08  02:14             2,048 boot.cat
 2025-02-07  21:23            45,056 isolinux.bin
 2025-02-07  20:23                35 isolinux.cfg
@@ -10,3 +13,17 @@
 2025-02-08  02:13         1,433,198 rootfs.gz
                6 File(s)     11,788,245 bytes
                2 Dir(s)  73,840,001,024 bytes free
+
+## QEMU
+
+```
+cd C:\Program Files\qemu
+
+C:\Program Files\qemu>qemu-img create ph.img 4G
+Formatting 'ph.img', fmt=raw size=4294967296
+
+C:\Program Files\qemu>qemu-system-x86_64 -boot d  -m 4096  -hda ph.img -cdrom ph.iso
+WARNING: Image format was not specified for 'ph.img' and probing guessed raw.
+         Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+```
