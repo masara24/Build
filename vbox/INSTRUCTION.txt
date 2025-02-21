@@ -27,3 +27,52 @@ WARNING: Image format was not specified for 'ph.img' and probing guessed raw.
          Automatically detecting the format is dangerous for raw images, write operations on block 0 will be restricted.
          Specify the 'raw' format explicitly to remove the restrictions.
 ```
+
+### parameter
+18         -name 设置虚拟机名称
+19         -m 指定虚拟机内存大小
+20         -smp 设置虚拟机CPU数
+21         -cpu 选择CPU
+22         -hda 选择使用*.qcow2 作为IDE硬盘镜像
+23         -cdrom 选择使用*.iso作为cdrom安装镜像
+24         -boot 选择启动类型: floppy (a), hard disk ©, CD-ROM (d), network (n)
+25         -enable-kvm 使能KVM支持：enable KVM full virtualization support
+26         -netdev 配置主机的虚拟网卡：configure a host TAP network backend with ID ‘str’
+27         type 类型 ifname 名称 connected to a bridge (default=br0)
+28         script：use network scripts ‘file’ (default=/etc/qemu-ifup)
+29         -device 配置虚拟机的网卡类型
+30         -vnc 配置VNC端口
+
+### tinycore
+如果需要远程登录可以安装openssh
+tce-load -wi openssh.tcz
+相关配置文件生成
+cd /usr/local/etc/ssh
+sudo cp sshd_config.orig sshd_config
+设置密码
+#使用以下命令修改密码，但需要满足密码策略要求
+passwd
+
+#强制更改默认用户 “tc” 的密码，以便您可以在 ssh user@hostname的方式登录时提示框下输入此密码。使用以下命令以更改密码：
+echo tc:password!23 | sudo chpasswd
+
+#注意：如果要更改 root 密码，可以使用以下命令以更改 root 更改密码：
+echo root:password!23 | sudo chpasswd
+启动 SSH 服务
+sudo /usr/local/etc/init.d/openssh start
+
+### ifconfig
+sudo ifconfig eth0 192.168.xxx.202 netmask 255.255.255.0
+sudo route add default gw 192.168.xxx.1 dev eth0
+sudo echo nameserver 192.168.xxx.1 >> /etc/resolv.conf
+
+### tcpdump
+tce-load -wi tcpdump
+
+### nc 
+nc 127.0.0.1 -p 2222 lk
+
+### toolchain
+tce-load -wi gcc
+tce-load -wi make
+tce-load -wi cmake
